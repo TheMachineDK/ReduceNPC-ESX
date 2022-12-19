@@ -5,7 +5,7 @@ local maxPeds = 100 -- maximum number of peds to allow
 -- Create a function to reduce the number of NPC ped models
 function reduceNPCPeds()
   -- Get a list of all the ped models currently spawned on the server
-  pedModels = ESX.Game.GetPeds()
+  pedModels = GetGamePool(CPeds)
 
   -- If the number of ped models is greater than the maximum allowed
   if #pedModels > maxPeds then
@@ -13,7 +13,7 @@ function reduceNPCPeds()
     for i = 1, #pedModels do
       if i > maxPeds then
         -- Despawn the ped model
-        ESX.Game.DeletePed(pedModels[i])
+        DeleteEntity(pedModels[i])
       end
     end
   end
